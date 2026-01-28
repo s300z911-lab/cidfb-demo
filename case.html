@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CIDFB | Cases Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    function switchLang(lang) {
+      document.querySelectorAll('.lang-en').forEach(el => el.style.display = lang==='en'?'block':'none');
+      document.querySelectorAll('.lang-ar').forEach(el => el.style.display = lang==='ar'?'block':'none');
+    }
+  </script>
+</head>
+<body>
+
+<header>
+  <h1>CIDFB</h1>
+  <span>Cyber Investigation & Digital Forensics Bureau</span>
+</header>
+
+<div class="container">
+
+  <aside class="sidebar">
+    <a href="home.html">Home</a>
+    <a class="active">Cases Dashboard</a>
+    <a href="case.html">Active Investigation</a>
+    <a href="report.html">Incident Report</a>
+    <a href="archive.html">Closed Cases</a>
+  </aside>
+
+  <main>
+    <h2 class="lang-en">Investigation Cases</h2>
+    <h2 class="lang-ar">قائمة القضايا</h2>
+
+    <table>
+      <tr>
+        <th class="lang-en">Case ID</th>
+        <th class="lang-ar">رقم القضية</th>
+        <th class="lang-en">Entity</th>
+        <th class="lang-ar">الجهة</th>
+        <th class="lang-en">Crime Type</th>
+        <th class="lang-ar">نوع الجريمة</th>
+        <th class="lang-en">Status</th>
+        <th class="lang-ar">الحالة</th>
+        <th class="lang-en">Opened</th>
+        <th class="lang-ar">تاريخ الفتح</th>
+      </tr>
+
+      <tr>
+        <td>CID-2025-DF-118</td>
+        <td>FinCore Systems</td>
+        <td>Financial Fraud</td>
+        <td class="active-status">Active</td>
+        <td>2025-03-05</td>
+      </tr>
+
+      <tr>
+        <td>CID-2025-IN-104</td>
+        <td>Government Entity</td>
+        <td>Insider Threat</td>
+        <td class="active-status">Active</td>
+        <td>2025-02-20</td>
+      </tr>
+
+      <tr>
+        <td>CID-2024-DB-332</td>
+        <td>Healthcare Provider</td>
+        <td>Data Breach</td>
+        <td class="closed-status">Closed</td>
+        <td>2024-12-11</td>
+      </tr>
+    </table>
+
+    <section class="stats-section">
+      <h3 class="lang-en">Quick Statistics</h3>
+      <h3 class="lang-ar">إحصائيات سريعة</h3>
+      <div class="stat-card">
+        <h4 class="lang-en">Active Cases</h4>
+        <h4 class="lang-ar">القضايا النشطة</h4>
+        <p>2</p>
+      </div>
+      <div class="stat-card">
+        <h4 class="lang-en">Closed Cases</h4>
+        <h4 class="lang-ar">القضايا المغلقة</h4>
+        <p>5</p>
+      </div>
+    </section>
+
+    <div class="lang-switch">
+      <button onclick="switchLang('en')">EN</button>
+      <button onclick="switchLang('ar')">AR</button>
+    </div>
+
+  </main>
+</div>
+</body>
+</html>

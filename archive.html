@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Closed Investigations</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    function switchLang(lang) {
+      document.querySelectorAll('.lang-en').forEach(el => el.style.display = lang==='en'?'block':'none');
+      document.querySelectorAll('.lang-ar').forEach(el => el.style.display = lang==='ar'?'block':'none');
+    }
+  </script>
+</head>
+<body>
+
+<header>
+  <h1>CIDFB</h1>
+  <span>Digital Crime Case Archive</span>
+</header>
+
+<div class="container">
+
+  <aside class="sidebar">
+    <a href="index.html">Dashboard</a>
+    <a class="active">Closed Cases</a>
+  </aside>
+
+  <main>
+    <h2 class="lang-en">Archived Cases</h2>
+    <h2 class="lang-ar">القضايا المغلقة</h2>
+
+    <ul class="archive-list">
+      <li class="lang-en">CID-2023-CC-078 – Credential Compromise</li>
+      <li class="lang-ar">CID-2023-CC-078 – تسريب بيانات الاعتماد</li>
+      <li class="lang-en">CID-2022-IN-041 – Insider Data Exfiltration</li>
+      <li class="lang-ar">CID-2022-IN-041 – تسريب بيانات داخلي</li>
+      <li class="lang-en">CID-2021-FI-019 – Payment Gateway Breach</li>
+      <li class="lang-ar">CID-2021-FI-019 – اختراق بوابة الدفع</li>
+    </ul>
+
+    <div class="lang-switch">
+      <button onclick="switchLang('en')">EN</button>
+      <button onclick="switchLang('ar')">AR</button>
+    </div>
+
+  </main>
+</div>
+
+</body>
+</html>

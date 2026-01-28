@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Digital Crime Incident Report</title>
+  <link rel="stylesheet" href="style.css">
+
+  <script>
+    function validateForm() {
+      const evidence = document.getElementById("evidence").files.length;
+      const agree = document.getElementById("agreement").checked;
+
+      if (evidence < 1) {
+        alert("At least one digital evidence file is required.");
+        return false;
+      }
+
+      if (!agree) {
+        alert("You must agree to the legal declaration.");
+        return false;
+      }
+
+      alert("Incident submitted successfully (Simulation).");
+      return true;
+    }
+  </script>
+</head>
+
+<body>
+
+<header>
+  <h1>CIDFB</h1>
+  <span>Cyber Forensics & Advanced Digital Investigation Bureau</span>
+</header>
+
+<div class="container">
+
+  <aside class="sidebar">
+    <a href="home.html">Home</a>
+    <a href="index.html">Cases Dashboard</a>
+    <a href="case.html">Active Investigation</a>
+    <a class="active">Incident Report</a>
+    <a href="archive.html">Closed Cases</a>
+  </aside>
+
+  <main>
+    <h2>Digital Crime Incident Report</h2>
+
+    <form onsubmit="return validateForm()">
+
+      <!-- Crime Information -->
+      <label>Type of Digital Crime *</label>
+      <select required>
+        <option value="">Select</option>
+        <option>Account Compromise</option>
+        <option>Financial Fraud</option>
+        <option>Cyber Blackmail</option>
+        <option>Data Breach</option>
+        <option>Identity Impersonation</option>
+      </select>
+
+      <label>Date & Time of Incident *</label>
+      <input type="datetime-local" required>
+
+      <label>Is the incident ongoing? *</label>
+      <select required>
+        <option value="">Select</option>
+        <option>Yes</option>
+        <option>No</option>
+      </select>
+
+      <label>Affected Platform / System *</label>
+      <input type="text" placeholder="Website, App, Email, Account" required>
+
+      <!-- Victim Information -->
+      <label>Reporter Role *</label>
+      <select required>
+        <option value="">Select</option>
+        <option>Victim</option>
+        <option>Legal Representative</option>
+        <option>Technical Entity</option>
+      </select>
+
+      <label>Victim / Entity Name *</label>
+      <input type="text" required>
+
+      <label>Official Contact (Email or Phone) *</label>
+      <input type="text" required>
+
+      <!-- Technical Details -->
+      <label>Incident Description *</label>
+      <textarea rows="5" maxlength="500" placeholder="Provide a factual description of the incident" required></textarea>
+
+      <label>Date of First Suspicious Activity *</label>
+      <input type="date" required>
+
+      <label>Date of Last Suspicious Activity *</label>
+      <input type="date" required>
+
+      <!-- Evidence -->
+      <label>Upload Digital Evidence (at least one file) *</label>
+      <input type="file" id="evidence" multiple>
+
+      <label>Evidence Description *</label>
+      <textarea rows="3" placeholder="When and how the evidence was obtained" required></textarea>
+
+      <!-- Optional Section -->
+      <label>Estimated Impact Level</label>
+      <select>
+        <option>Low</option>
+        <option>Medium</option>
+        <option>High</option>
+        <option>Critical</option>
+      </select>
+
+      <label>Financial Loss (if any)</label>
+      <input type="text" placeholder="Approximate amount">
+
+      <!-- Legal Declaration -->
+      <div class="checkbox-group">
+        <label>
+          <input type="checkbox" id="agreement">
+          I hereby declare that all provided information is accurate and I accept full legal responsibility in case of false reporting.
+        </label>
+      </div>
+
+      <label>Full Name *</label>
+      <input type="text" required>
+
+      <button type="submit">Submit Incident</button>
+
+    </form>
+
+  </main>
+</div>
+
+</body>
+</html>
