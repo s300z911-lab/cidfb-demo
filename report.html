@@ -1,41 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
   <title>Digital Crime Incident Report</title>
   <link rel="stylesheet" href="style.css">
 
   <script>
+    // تحديد اللغة الحالية
+    let currentLang = 'en';
+
     function switchLang(lang) {
+      currentLang = lang;
       document.querySelectorAll('.lang-en').forEach(el => el.style.display = lang==='en'?'block':'none');
       document.querySelectorAll('.lang-ar').forEach(el => el.style.display = lang==='ar'?'block':'none');
+    }
+
     function validateForm() {
-  const evidence = document.getElementById("evidence").files.length;
-  const agree = document.getElementById("agreement").checked;
+      const evidence = document.getElementById("evidence").files.length;
+      const agree = document.getElementById("agreement").checked;
 
-  // نحدد اللغة حسب أي نسخة معروضة
-  const lang = document.querySelector('.lang-ar').style.display === 'block' ? 'ar' : 'en';
+      if (evidence < 1) {
+        if(currentLang==='en'){
+          alert("At least one digital evidence file is required.");
+        } else {
+          alert("يجب رفع ملف واحد على الأقل من الأدلة الرقمية.");
+        }
+        return false;
+      }
 
-  if (evidence < 1) {
-    alert(lang === 'ar' 
-      ? "يجب تحميل ملف/ملفات دليل رقمي على الأقل." 
-      : "At least one digital evidence file is required.");
-    return false;
-  }
+      if (!agree) {
+        if(currentLang==='en'){
+          alert("You must agree to the legal declaration before submitting. Failing to do so may result in legal consequences.");
+        } else {
+          alert("يجب الموافقة على التصريح القانوني قبل الإرسال. عدم الموافقة أو تقديم معلومات غير صحيحة قد يؤدي إلى مساءلة قانونية.");
+        }
+        return false;
+      }
 
-  if (!agree) {
-    alert(lang === 'ar' 
-      ? "يجب الموافقة على التصريح القانوني قبل إرسال البلاغ، وفي حالة تقديم معلومات خاطئة تتحمل المسؤولية القانونية." 
-      : "You must agree to the legal declaration; providing false information may result in legal consequences.");
-    return false;
-  }
+      if(currentLang==='en'){
+        alert("Incident submitted successfully (Simulation).");
+      } else {
+        alert("تم إرسال البلاغ بنجاح (محاكاة).");
+      }
 
-  alert(lang === 'ar' 
-    ? "تم إرسال البلاغ بنجاح." 
-    : "Incident submitted successfully (Simulation).");
-  return true;
-}
+      return true;
+    }
   </script>
 </head>
 
@@ -43,8 +53,7 @@
 
 <header>
   <h1>CIDFB</h1>
-  <span class="lang-en">Cyber Forensics & Advanced Digital Investigation Bureau</span>
-  <span class="lang-ar">مكتب التحقيق المتقدم والأدلة الجنائية الرقمية</span>
+  <span>Cyber Forensics & Advanced Digital Investigation Bureau</span>
 </header>
 
 <div class="container">
@@ -58,9 +67,8 @@
   </aside>
 
   <main>
-
     <h2 class="lang-en">Digital Crime Incident Report</h2>
-    <h2 class="lang-ar">بلاغ جريمة رقمية</h2>
+    <h2 class="lang-ar">نموذج تقرير حادثة الجرائم الرقمية</h2>
 
     <form onsubmit="return validateForm()">
 
@@ -69,73 +77,98 @@
       <label class="lang-ar">نوع الجريمة الرقمية *</label>
       <select required>
         <option value="">Select</option>
-        <option class="lang-en">Account Compromise</option>
-        <option class="lang-ar">اختراق حساب</option>
-        <option class="lang-en">Financial Fraud</option>
-        <option class="lang-ar">احتيال مالي</option>
-        <option class="lang-en">Cyber Blackmail</option>
-        <option class="lang-ar">ابتزاز إلكتروني</option>
-        <option class="lang-en">Data Breach</option>
-        <option class="lang-ar">اختراق بيانات</option>
-        <option class="lang-en">Identity Impersonation</option>
-        <option class="lang-ar">انتحال هوية</option>
+        <option>Account Compromise</option>
+        <option>Financial Fraud</option>
+        <option>Cyber Blackmail</option>
+        <option>Data Breach</option>
+        <option>Identity Impersonation</option>
       </select>
 
       <label class="lang-en">Date & Time of Incident *</label>
-      <label class="lang-ar">تاريخ ووقت الحادثة *</label>
+      <label class="lang-ar">تاريخ ووقت الحادث *</label>
       <input type="datetime-local" required>
 
       <label class="lang-en">Is the incident ongoing? *</label>
-      <label class="lang-ar">هل الحادثة مستمرة؟ *</label>
+      <label class="lang-ar">هل الحادث مستمر؟ *</label>
       <select required>
-        <option class="lang-en">Yes</option>
-        <option class="lang-ar">نعم</option>
-        <option class="lang-en">No</option>
-        <option class="lang-ar">لا</option>
+        <option value="">Select</option>
+        <option>Yes</option>
+        <option>No</option>
       </select>
 
       <label class="lang-en">Affected Platform / System *</label>
-      <label class="lang-ar">المنصة أو النظام المتأثر *</label>
-      <input type="text" required>
+      <label class="lang-ar">المنصة / النظام المتأثر *</label>
+      <input type="text" placeholder="Website, App, Email, Account" required>
 
       <!-- Victim Information -->
       <label class="lang-en">Reporter Role *</label>
-      <label class="lang-ar">صفة المبلّغ *</label>
+      <label class="lang-ar">دور المبلغ *</label>
       <select required>
-        <option class="lang-en">Victim</option>
-        <option class="lang-ar">الضحية</option>
-        <option class="lang-en">Legal Representative</option>
-        <option class="lang-ar">ممثل قانوني</option>
-        <option class="lang-en">Technical Entity</option>
-        <option class="lang-ar">جهة تقنية</option>
+        <option value="">Select</option>
+        <option>Victim</option>
+        <option>Legal Representative</option>
+        <option>Technical Entity</option>
       </select>
 
       <label class="lang-en">Victim / Entity Name *</label>
       <label class="lang-ar">اسم الضحية / الجهة *</label>
       <input type="text" required>
 
-      <label class="lang-en">Official Contact *</label>
-      <label class="lang-ar">وسيلة التواصل الرسمية *</label>
+      <label class="lang-en">Official Contact (Email or Phone) *</label>
+      <label class="lang-ar">جهة الاتصال الرسمية (البريد الإلكتروني أو الهاتف) *</label>
       <input type="text" required>
 
+      <!-- Technical Details -->
       <label class="lang-en">Incident Description *</label>
-      <label class="lang-ar">وصف الحادثة *</label>
-      <textarea rows="5" required></textarea>
+      <label class="lang-ar">وصف الحادث *</label>
+      <textarea rows="5" maxlength="500" placeholder="Provide a factual description of the incident" required></textarea>
 
-      <label class="lang-en">Upload Digital Evidence *</label>
-      <label class="lang-ar">رفع الأدلة الرقمية *</label>
+      <label class="lang-en">Date of First Suspicious Activity *</label>
+      <label class="lang-ar">تاريخ أول نشاط مشبوه *</label>
+      <input type="date" required>
+
+      <label class="lang-en">Date of Last Suspicious Activity *</label>
+      <label class="lang-ar">تاريخ آخر نشاط مشبوه *</label>
+      <input type="date" required>
+
+      <!-- Evidence -->
+      <label class="lang-en">Upload Digital Evidence (at least one file) *</label>
+      <label class="lang-ar">رفع الأدلة الرقمية (ملف واحد على الأقل) *</label>
       <input type="file" id="evidence" multiple>
 
+      <label class="lang-en">Evidence Description *</label>
+      <label class="lang-ar">وصف الأدلة *</label>
+      <textarea rows="3" placeholder="When and how the evidence was obtained" required></textarea>
+
+      <!-- Optional Section -->
+      <label class="lang-en">Estimated Impact Level</label>
+      <label class="lang-ar">تقدير مستوى التأثير</label>
+      <select>
+        <option>Low</option>
+        <option>Medium</option>
+        <option>High</option>
+        <option>Critical</option>
+      </select>
+
+      <label class="lang-en">Financial Loss (if any)</label>
+      <label class="lang-ar">الخسارة المالية (إن وجدت)</label>
+      <input type="text" placeholder="Approximate amount">
+
+      <!-- Legal Declaration -->
       <div class="checkbox-group">
         <label class="lang-en">
           <input type="checkbox" id="agreement">
-        I hereby declare that all information provided in this incident report is true, complete, and accurate to the best of my knowledge. I acknowledge that any false, misleading, or incomplete information may result in legal liability and accountability in accordance with applicable laws and regulations.
+          I hereby declare that all provided information is accurate, truthful, and complete. Any false statement, omission, or misrepresentation may result in legal consequences, including fines or criminal charges.
         </label>
         <label class="lang-ar">
-          <input type="checkbox">
-         أقر بموجبه أن جميع المعلومات المقدمة في هذا التقرير دقيقة وكاملة وصحيحة حسب علمي. وأقر بأن أي معلومات خاطئة أو مضللة أو ناقصة قد تؤدي إلى المسؤولية القانونية والمحاسبة وفقًا للقوانين والأنظمة المعمول بها.
+          <input type="checkbox" id="agreement">
+          أقر بموجب هذا أن جميع المعلومات المقدمة دقيقة وصحيحة وكاملة. أي تصريح خاطئ، أو حذف معلومات، أو تحريف للحقائق قد يؤدي إلى مساءلة قانونية، بما في ذلك الغرامات أو الملاحقة الجنائية.
         </label>
       </div>
+
+      <label class="lang-en">Full Name *</label>
+      <label class="lang-ar">الاسم الكامل *</label>
+      <input type="text" required>
 
       <button type="submit" class="lang-en">Submit Incident</button>
       <button type="submit" class="lang-ar">إرسال البلاغ</button>
@@ -152,5 +185,3 @@
 
 </body>
 </html>
-
-
