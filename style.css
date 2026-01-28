@@ -1,7 +1,11 @@
+/* عام */
 .container {
   width: 90%; /* بدل 800px */
   margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap; /* يسمح للـ sidebar والـ main بالتكيف */
 }
+
 body {
   margin: 0;
   font-family: "Segoe UI", Arial, sans-serif;
@@ -25,10 +29,7 @@ header span {
   opacity: 0.85;
 }
 
-.container {
-  display: flex;
-}
-
+/* Sidebar */
 .sidebar {
   width: 230px;
   background: #142f44;
@@ -50,6 +51,7 @@ header span {
   color: white;
 }
 
+/* Main content */
 main {
   flex: 1;
   padding: 30px;
@@ -127,6 +129,7 @@ button {
   cursor: pointer;
 }
 
+/* Home Hero */
 .home-hero {
   background: linear-gradient(135deg, #0b2b45, #a1bfdc);
   color: white;
@@ -136,10 +139,9 @@ button {
 }
 
 .home-hero h2 {
-  font-size: 42px;          
+  font-size: 42px;
   margin-bottom: 20px;
-  text-shadow: 2px 2px 6px rgba(0,0,0,0.5); 
-  color: white;             
+  text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
 }
 
 .home-hero p {
@@ -237,5 +239,60 @@ button {
   margin-bottom: 10px;
   border-left: 4px solid #2e7d32;
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
 
+/* ======== Responsive للجوال ======== */
+@media only screen and (max-width: 768px) {
+  .container {
+    flex-direction: column; /* sidebar تحت الهيدر */
+  }
+  
+  .sidebar {
+    width: 100%;
+    min-height: auto;
+  }
+  
+  main {
+    padding: 15px;
+  }
+  
+  header h1 {
+    font-size: 20px;
+  }
+  
+  header span {
+    font-size: 12px;
+  }
+  
+  .home-hero {
+    padding: 60px 20px;
+  }
+  
+  .home-hero h2 {
+    font-size: 32px;
+  }
+  
+  .home-hero p {
+    font-size: 16px;
+  }
+  
+  .home-buttons a {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+  
+  table, th, td {
+    font-size: 14px;
+    padding: 10px;
+  }
+  
+  .stat-card {
+    width: 140px;
+    padding: 15px;
+    margin: 8px;
+  }
+  
+  form {
+    padding: 20px;
+  }
 }
