@@ -1,36 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chain of Custody</title>
   <link rel="stylesheet" href="style.css">
-  <script>
-    function switchLang(lang) {
-      document.querySelectorAll('.lang-en').forEach(el => el.style.display = lang==='en'?'block':'none');
-      document.querySelectorAll('.lang-ar').forEach(el => el.style.display = lang==='ar'?'block':'none');
-    }
-  </script>
 </head>
-
 <body>
 
-<h2 class="lang-en">Chain of Custody</h2>
-<h2 class="lang-ar">سلسلة الحيازة</h2>
+<h2>Chain of Custody (Simulation)</h2>
 
 <table>
-  <tr>
-    <th class="lang-en">Evidence</th>
-    <th class="lang-ar">الدليل</th>
-    <th class="lang-en">Collected By</th>
-    <th class="lang-ar">تم الجمع بواسطة</th>
-  </tr>
+<tr>
+  <th>Evidence ID</th>
+  <th>Description</th>
+  <th>Collected By</th>
+  <th>Date & Time</th>
+</tr>
+
+<tr>
+  <td>EV-001</td>
+  <td>Employee Laptop</td>
+  <td>Forensics Analyst</td>
+  <td>22 Jan 2026 – 14:10</td>
+</tr>
+
+<tr>
+  <td>EV-002</td>
+  <td>USB Storage Device</td>
+  <td>Forensics Analyst</td>
+  <td>22 Jan 2026 – 14:25</td>
+</tr>
 </table>
 
-<div class="lang-switch">
-  <button onclick="switchLang('en')">EN</button>
-  <button onclick="switchLang('ar')">AR</button>
-</div>
+<p class="notice">
+All records are simulated for academic purposes only.
+</p>
+
+<a href="index.html" class="btn">Back</a>
 
 </body>
 </html>
