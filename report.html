@@ -10,25 +10,32 @@
     function switchLang(lang) {
       document.querySelectorAll('.lang-en').forEach(el => el.style.display = lang==='en'?'block':'none');
       document.querySelectorAll('.lang-ar').forEach(el => el.style.display = lang==='ar'?'block':'none');
-    }
-
     function validateForm() {
-      const evidence = document.getElementById("evidence").files.length;
-      const agree = document.getElementById("agreement").checked;
+  const evidence = document.getElementById("evidence").files.length;
+  const agree = document.getElementById("agreement").checked;
 
-      if (evidence < 1) {
-        alert("At least one digital evidence file is required.");
-        return false;
-      }
+  // نحدد اللغة حسب أي نسخة معروضة
+  const lang = document.querySelector('.lang-ar').style.display === 'block' ? 'ar' : 'en';
 
-      if (!agree) {
-        alert("You must agree to the legal declaration.");
-        return false;
-      }
+  if (evidence < 1) {
+    alert(lang === 'ar' 
+      ? "يجب تحميل ملف/ملفات دليل رقمي على الأقل." 
+      : "At least one digital evidence file is required.");
+    return false;
+  }
 
-      alert("Incident submitted successfully (Simulation).");
-      return true;
-    }
+  if (!agree) {
+    alert(lang === 'ar' 
+      ? "يجب الموافقة على التصريح القانوني قبل إرسال البلاغ، وفي حالة تقديم معلومات خاطئة تتحمل المسؤولية القانونية." 
+      : "You must agree to the legal declaration; providing false information may result in legal consequences.");
+    return false;
+  }
+
+  alert(lang === 'ar' 
+    ? "تم إرسال البلاغ بنجاح." 
+    : "Incident submitted successfully (Simulation).");
+  return true;
+}
   </script>
 </head>
 
@@ -145,4 +152,5 @@
 
 </body>
 </html>
+
 
